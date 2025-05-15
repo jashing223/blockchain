@@ -14,7 +14,7 @@
 					},
 					{
 						"internalType": "uint256",
-						"name": "rawPassword",
+						"name": "hashVal",
 						"type": "uint256"
 					}
 				],
@@ -97,11 +97,11 @@
 	},
 	"sources": {
 		"contracts/hw3.sol": {
-			"keccak256": "0xeca26be7913f24c70e2257e7942bb72ae8497056ce0566e9fe9fc49978c705c4",
+			"keccak256": "0x91f66c9d49ee7b2190014673f805b95db0b36455c654ac93f5425e11bbc7e06c",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://85a415bf144179d6c669b27fd04a84ba0d9278523db90cdf6f5871d916d97624",
-				"dweb:/ipfs/QmcK7DJDm1KNFSr8BnwXYZRHXsQcChMozc4NXtpW5wvKUX"
+				"bzz-raw://c35ccc027b01cf4cab09c43a9563f501ddbfb5a63c387682b857d56ac38b956a",
+				"dweb:/ipfs/QmSstWZSg2ZBgbw58kzwEvqSPXC1EjbWMx9GN7xXDvn8tg"
 			]
 		}
 	},
