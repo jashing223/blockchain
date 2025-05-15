@@ -1,0 +1,73 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "deposit",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getBlance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "withdraw",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"example03.sol": "Example03"
+		},
+		"evmVersion": "prague",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"example03.sol": {
+			"keccak256": "0xab53648254306be14430f4692b886d2e2759cfff592270f250ad4d3d728211cc",
+			"license": "GPL-3.0",
+			"urls": [
+				"bzz-raw://db15c6043d377152a25c09836eef4a591eb24273dcd1ff0a3b61b7e307513862",
+				"dweb:/ipfs/Qmdn35cixccHwSR6nYU79Lc1Y7cPoVW9QHMYLFFZuvAN4B"
+			]
+		}
+	},
+	"version": 1
+}
