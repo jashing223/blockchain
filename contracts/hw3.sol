@@ -22,7 +22,7 @@ contract hw3{
         return hash(rawPassword) == getHashedPassword();
     }
 
-    // deposit with setting the raw password with manually hash it
+    // deposit and set the withdraw password without manually hashing it
     function deposit(address to, uint256 rawPassword) public payable {
         user = to;
         hashedPassword = hash(rawPassword);
