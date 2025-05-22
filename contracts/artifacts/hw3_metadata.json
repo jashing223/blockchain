@@ -4,71 +4,7 @@
 	},
 	"language": "Solidity",
 	"output": {
-		"abi": [
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "to",
-						"type": "address"
-					},
-					{
-						"internalType": "uint256",
-						"name": "hashVal",
-						"type": "uint256"
-					}
-				],
-				"name": "deposit",
-				"outputs": [],
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getBlance",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "input",
-						"type": "uint256"
-					}
-				],
-				"name": "hash",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "pure",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "rawPassword",
-						"type": "uint256"
-					}
-				],
-				"name": "withdraw",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			}
-		],
+		"abi": [],
 		"devdoc": {
 			"kind": "dev",
 			"methods": {},
@@ -82,7 +18,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/hw3.sol": "hw3"
+			"contracts/hw4.sol": "hw3"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -96,12 +32,12 @@
 		"remappings": []
 	},
 	"sources": {
-		"contracts/hw3.sol": {
-			"keccak256": "0x91f66c9d49ee7b2190014673f805b95db0b36455c654ac93f5425e11bbc7e06c",
+		"contracts/hw4.sol": {
+			"keccak256": "0x31fd0d6224fef2516f760a3d833753285944eb38bc3f40737c542b72fdf252aa",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://c35ccc027b01cf4cab09c43a9563f501ddbfb5a63c387682b857d56ac38b956a",
-				"dweb:/ipfs/QmSstWZSg2ZBgbw58kzwEvqSPXC1EjbWMx9GN7xXDvn8tg"
+				"bzz-raw://182769db2e29ea07962f391cac4aeaa9a2dc1ba452773d37102d8bb91200b6da",
+				"dweb:/ipfs/QmdfBre78MF5kXozoKni6XvLF9A6uQAo2VZmgfqEmagEr2"
 			]
 		}
 	},
