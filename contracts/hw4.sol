@@ -14,9 +14,12 @@ contract hw4 {
 
     function deposit(address to, uint256 hashedPassword) public payable {
         require(msg.value > 0);
-        if (!isAccountExist(to)) accounts.push(to);
-        password[msg.sender] = hashedPassword;
+        // if send to account that have no balance, create account
+        if (balance[to] == 0) accounts.push(to);
         balance[to] += msg.value;
+
+        if (balance[msg.sender] != 0)
+            password[msg.sender] = hashedPassword;
     }
 
     function getBalance(address addr) public view returns (uint256) {
@@ -42,22 +45,18 @@ contract hw4 {
 
     function transfer(address to, uint256 amount, uint256 psword, uint256 newHashedPassword) public {
         require(amount > 0);
-        if (balance[to] == 0 ||
-            balance[msg.sender] < amount ||
+        if (balance[msg.sender] < amount ||
             hash(psword) != password[msg.sender] )
         return;
+
+        // if send to account that have no balance, create account
+        if (balance[to] == 0) accounts.push(to);
 
         balance[to] += amount;
         balance[msg.sender] -= amount;
         
         if (balance[msg.sender] == 0) clearAccount(msg.sender);
         else password[msg.sender] = newHashedPassword;
-    }
-
-    function isAccountExist(address addr) private view returns (bool) {
-        // = length: not found, or index
-        if (getAccountIndex(addr) == accounts.length) return false;
-        return true;
     }
 
     function getAccountIndex(address addr) private view returns (uint) {
@@ -80,5 +79,9 @@ contract hw4 {
         // clear rest thing
         delete (balance[account]);
         delete (password[account]);
+    }
+
+    function isAccountSetPassword(address addr) public view returns (bool) {
+        return (password[addr] != 0);
     }
 }
