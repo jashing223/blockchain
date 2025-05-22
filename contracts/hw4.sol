@@ -3,7 +3,7 @@
 
 pragma solidity ^0.8.0;
 
-contract Example01 {
+contract hw4 {
     mapping(address => uint256) balance;
     mapping(address => uint256) password;
     address[] accounts;
