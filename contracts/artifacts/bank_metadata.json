@@ -6,6 +6,11 @@
 	"output": {
 		"abi": [
 			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
 				"anonymous": false,
 				"inputs": [
 					{
@@ -42,12 +47,91 @@
 					{
 						"indexed": false,
 						"internalType": "bool",
-						"name": "success",
+						"name": "state",
 						"type": "bool"
 					}
 				],
 				"name": "depositLogs",
 				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "requester",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "lookBalanceLogs",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "state",
+						"type": "bool"
+					}
+				],
+				"name": "transferLogs",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "addr",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "state",
+						"type": "bool"
+					}
+				],
+				"name": "withdrawLogs",
+				"type": "event"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "fallback"
 			},
 			{
 				"inputs": [
@@ -58,7 +142,7 @@
 					},
 					{
 						"internalType": "uint256",
-						"name": "hashedPassword",
+						"name": "password",
 						"type": "uint256"
 					}
 				],
@@ -76,7 +160,7 @@
 					},
 					{
 						"internalType": "uint256",
-						"name": "psword",
+						"name": "password",
 						"type": "uint256"
 					}
 				],
@@ -114,25 +198,6 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "addr",
-						"type": "address"
-					}
-				],
-				"name": "isAccountSetPassword",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
 						"name": "to",
 						"type": "address"
 					},
@@ -143,12 +208,7 @@
 					},
 					{
 						"internalType": "uint256",
-						"name": "psword",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "newHashedPassword",
+						"name": "password",
 						"type": "uint256"
 					}
 				],
@@ -161,7 +221,7 @@
 				"inputs": [
 					{
 						"internalType": "uint256",
-						"name": "psword",
+						"name": "password",
 						"type": "uint256"
 					}
 				],
@@ -169,6 +229,10 @@
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
 			}
 		],
 		"devdoc": {
@@ -184,7 +248,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/hw5.sol": "hw4"
+			"contracts/hw5.sol": "bank"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -199,11 +263,11 @@
 	},
 	"sources": {
 		"contracts/hw5.sol": {
-			"keccak256": "0x9ec71f2b953c0166bb2e7b7de294e1031350afbecf061ea249fad9a41dcaa2e6",
+			"keccak256": "0xd70dfe9b20591518e31ebf0e5f1042069f655279bc6444c5d07db690ca3ee7a7",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://ff241bd5d2ad2fbd7371b0d1ecb7ab361e9be7737c0de9f5e050ff0a569b29fe",
-				"dweb:/ipfs/QmUWvsFN16JE4dkFG79MmqxU3P3x5QH5oF1GXJXaYo4rg1"
+				"bzz-raw://03b25422dab4ec4e186b5cbff955bac9ad7a869705a7e373b69f4f8c9a9e0a18",
+				"dweb:/ipfs/Qmb5Npa9PPykvemT16MoWESNBrQwoSxsxzzeNxVocQfRV8"
 			]
 		}
 	},
