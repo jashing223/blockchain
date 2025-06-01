@@ -9,7 +9,7 @@ contract sendToContract{
         return address(this).balance;
     }
 
-    function SendToContract(address addr, uint amount)public {
+    function SendToContract(address addr, uint amount) public {
         payable(addr).call{value: amount}("");
     }
 

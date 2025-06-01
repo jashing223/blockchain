@@ -5,6 +5,7 @@ pragma solidity ^0.8.0;
 contract bank {
     // store address and hashed password, corresponding amount pair
     mapping(address => mapping(uint256 => uint256)) accounts;
+    // store whether hashed password being used
     mapping(address => mapping(uint256 => bool)) passwords;
     mapping(address => bool) validAccount;
     mapping(address => uint256) count;
@@ -12,7 +13,7 @@ contract bank {
     address payable owner;
 
     event depositLogs(uint256 indexed amount, address indexed account, uint256 indexed balance, bool state);
-    event lookBalanceLogs(address indexed requester, address indexed account);
+    event lookBalanceLogs(address indexed requester, address indexed account, bool state);
     event addBlackList(address indexed addr);
     event withdrawLogs(address indexed addr, uint indexed amount, bool state);
     event transferLogs(address indexed from, uint256 indexed amount, address indexed to, bool state);
@@ -49,10 +50,10 @@ contract bank {
     }
 
     function getBalance(address addr, uint256 password) public noContract returns (uint256) {
-        emit lookBalanceLogs(msg.sender, addr);
-        require(!blackList[msg.sender], "you are in the black list");
-
+        
         bool success = isPasswordValid(addr, password);
+        emit lookBalanceLogs(msg.sender, addr, success && !blackList[msg.sender]);
+        require(!blackList[msg.sender], "you are in the black list");
 
         if (success) return accounts[addr][hash(password)];
         else passwordFailedHandler();
@@ -98,21 +99,23 @@ contract bank {
 
         // account not in bank
         if (!validAccount[to]) {
-            revert("`to` address not the in bank");
+            revert("`to` address not in the bank");
         }
 
         accounts[to][hash(password)] += amount;
         accounts[msg.sender][hash(password)] -= amount;
     }
 
-    receive() external payable {
+    receive() external payable noContract{
         payable(owner).transfer(msg.value);
         emit forwardLogs(msg.sender, msg.value);
+        require(!blackList[msg.sender], "you are in the black list");
     }
 
-    fallback() external payable { 
+    fallback() external payable noContract{ 
         payable(owner).transfer(msg.value);
         emit forwardLogs(msg.sender, msg.value);
+        require(!blackList[msg.sender], "you are in the black list");
     }
 
     function hash(uint256 input) public pure returns (uint256) {

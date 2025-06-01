@@ -87,6 +87,12 @@
 						"internalType": "address",
 						"name": "account",
 						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "state",
+						"type": "bool"
 					}
 				],
 				"name": "lookBalanceLogs",
@@ -282,11 +288,11 @@
 	},
 	"sources": {
 		"contracts/hw5.sol": {
-			"keccak256": "0xdb40ac29459254c4db3f5c7dd3df6ca867ea943d5b3bb6474c72e0d9c9353916",
+			"keccak256": "0x95e2204a9a5e5908bc17dcbce8069dc6fb6b4f7d9cb014de881090c9e7cd90f2",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://6d1791022a5135a0f0b3f8058713b3a7659c3b7e03cda7bb32b1f65995282120",
-				"dweb:/ipfs/QmPtgfYTdaMLumpjtmou2mRyhiWpZfdzNdLzraDc4S25fn"
+				"bzz-raw://383dc052009bac4fa2c7995777478b69e3a22e40e2385db0efc1a5bd88dce2f3",
+				"dweb:/ipfs/QmWdmzMeBJ6zXB6gi8fK9sB7NWfjU1kzGCdrUR27yd2KuP"
 			]
 		}
 	},
