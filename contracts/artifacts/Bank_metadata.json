@@ -273,7 +273,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/hw5.sol": "bank"
+			"contracts/hw5.sol": "Bank"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -288,11 +288,11 @@
 	},
 	"sources": {
 		"contracts/hw5.sol": {
-			"keccak256": "0xdf9f5666b71779952195058d15d74938f6f479e971f55d869fc9dc70ef07a02f",
+			"keccak256": "0x8bce4a5a81cd63d61c21ea5c44a79cc3a6b2e143c7b5f0cf759a620f881a6665",
 			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://67764469a0b834d86306cc0a58b2f576ad9ecb3647a8ddd2d88c7567e5e46bf6",
-				"dweb:/ipfs/Qmd6uBtQ96B3uBtZLokkYWjZfSZH2JTYQ9YeTKiRTwbso8"
+				"bzz-raw://9eec421f293383405d182db5a0aa1764905a54cb52f9754b31649dac15dc2cc0",
+				"dweb:/ipfs/QmNve6GqAH9d5rCP3gcVXbZMpzBFxmMye226GiF94i9yQE"
 			]
 		}
 	},

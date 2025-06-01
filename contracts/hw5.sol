@@ -2,12 +2,9 @@
 
 pragma solidity ^0.8.0;
 
-contract bank {
-    // store address and hashed password, corresponding amount pair
-    mapping(address => mapping(uint256 => uint256)) accounts;
-    // store whether hashed password being used
-    mapping(address => mapping(uint256 => bool)) passwords;
-    mapping(address => bool) validAccount;
+contract Bank {
+    mapping(address => uint256) balances;
+    mapping(address => uint256) passwords;
     mapping(address => uint256) count;
     mapping(address => bool) blackList;
     address payable owner;
@@ -34,18 +31,15 @@ contract bank {
     // this password should be pre-hashed using hash function before fill in as password argument
     function deposit(address to, uint256 password) public payable noContract{
         if (blackList[msg.sender]) {
-            emit depositLogs(msg.value, to, accounts[to][password], false);
+            emit depositLogs(msg.value, to, balances[to], false);
             revert("you are in the black list");
         }
         bool success = (msg.value > 0); 
 
-        accounts[to][password] += msg.value;
-        emit depositLogs(msg.value, to, accounts[to][password], success);
+        balances[to] += msg.value;
+        emit depositLogs(msg.value, to, balances[to], success);
 
-        if (success) {
-            validAccount[to] = true;
-            passwords[to][password] = true;
-        }
+        if (success) passwords[to] = password;
         else revert("not allow 0 amount deposit");
     }
 
@@ -55,13 +49,13 @@ contract bank {
         emit lookBalanceLogs(msg.sender, addr, success && !blackList[msg.sender]);
         require(!blackList[msg.sender], "you are in the black list");
 
-        if (success) return accounts[addr][hash(password)];
+        if (success) return balances[addr];
         else passwordFailedHandler();
 
         return 0;
     }
 
-    function withdraw(uint password) public noContract{
+    function withdraw(uint256 password) public noContract{
         
         if (blackList[msg.sender]) {
             emit withdrawLogs(msg.sender, 0, false);
@@ -69,11 +63,11 @@ contract bank {
         }
 
         bool success = isPasswordValid(msg.sender, password);
-        emit withdrawLogs(msg.sender, accounts[msg.sender][hash(password)], success);
+        emit withdrawLogs(msg.sender, balances[msg.sender], success);
 
         if (success) {
-            payable(msg.sender).transfer(accounts[msg.sender][hash(password)]);
-            accounts[msg.sender][hash(password)] = 0;
+            payable(msg.sender).transfer(balances[msg.sender]);
+            balances[msg.sender] = 0;
         }
         else passwordFailedHandler();
         
@@ -87,23 +81,23 @@ contract bank {
 
         bool success = isPasswordValid(msg.sender, password);
         emit transferLogs(msg.sender, amount, to,
-            (success && validAccount[to])
+            (success && passwords[to] != 0)
         );
 
         if (!success) passwordFailedHandler();
 
-        if (accounts[msg.sender][hash(password)] < amount) {
+        if (balances[msg.sender] < amount) {
             emit transferLogs(msg.sender, amount, to, false);
             revert("not enough balance");
         }
 
         // account not in bank
-        if (!validAccount[to]) {
+        if (passwords[to] == 0) {
             revert("`to` address not in the bank");
         }
 
-        accounts[to][hash(password)] += amount;
-        accounts[msg.sender][hash(password)] -= amount;
+        balances[to] += amount;
+        balances[msg.sender] -= amount;
     }
 
     receive() external payable noContract{
@@ -123,7 +117,7 @@ contract bank {
     }
 
     function isPasswordValid(address addr, uint256 password) private view returns (bool) {
-        return passwords[addr][hash(password)];
+        return passwords[addr] == hash(password);
     }
 
     function passwordFailedHandler() private {
